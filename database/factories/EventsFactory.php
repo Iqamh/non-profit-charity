@@ -7,7 +7,6 @@ use App\Models\Events;
 
 class EventsFactory extends Factory
 {
-    protected $model = Events::class;
     /**
      * Define the model's default state.
      *
@@ -18,9 +17,10 @@ class EventsFactory extends Factory
         return [
             'title' => fake()->word(),
             'address' => fake()->address(),
-            'description' => fake()->paragraph(),
+            'description' => fake()->text(150),
+            'image' => 'images/' . fake()->image(public_path('images'), 1600, 2100, null, false),
             'start' => fake()->dateTimeBetween('now', '+30 days'),
-            'end' => fake()->dateTimeBetween('start', '+30 days')
+            'end' => fake()->dateTimeBetween('+30 days', '+60 days')
         ];
     }
 }

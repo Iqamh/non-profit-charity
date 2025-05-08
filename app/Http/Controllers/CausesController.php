@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 use App\Models\Causes;
-use File;
+use App\Models\Donates;
 
 class CausesController extends Controller
 {
@@ -35,17 +35,6 @@ class CausesController extends Controller
         $causes->Description = $request->input('Description');
         $causes->Start = $request->input('Start');
         $causes->End = $request->input('End');
-
-        // Get the current user's usertype
-        $usertype = Auth::user()->usertype;
-
-        // Check if the user is an admin (usertype 1) and set the creator accordingly
-        if ($usertype == 1) {
-            $causes->creator = 'Admin'; // You can set the admin's name here or any specific identifier.
-        } else {
-            // For regular users, set the creator as the user's name
-            $causes->creator = Auth::user()->name;
-        }
 
         // THIS FUNCTION UPDATE NEW IMAGE Settings IN PAGE Settings UPDATE //
         if ($request->file('image')){  
@@ -77,7 +66,7 @@ class CausesController extends Controller
     {
         $causes = Causes::findOrFail($id);
         request()->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'image' => 'image|mimes:jpeg,png,jpg',
         ]);
         $causes->Title = $request->input('Title');
         $causes->goals = $request->input('Goals');
@@ -93,10 +82,6 @@ class CausesController extends Controller
             $filename = $viewimage.$file->getClientOriginalName();
             $file->move($destinationPath, $filename); 
             $causes->image = $filename;
-            // THIS TO SAVE  Settings UPDATE //
-            $causes->save(); 
-          }else{
-            $causes->save();  
           }
         
         $causes->save();
@@ -111,5 +96,13 @@ class CausesController extends Controller
         File::delete($causes->image);
         $causes->delete();
         return back()->with('Delete','Causes Deleted successfully');
+    }
+
+    public function show($id)
+    {
+        $cause = Causes::findOrFail($id);
+        $dons = Donates::where('title', $cause->title)->paginate(10);
+
+        return view('dashboard.dashboardCauses.show', compact('cause', 'dons'));
     }
 }

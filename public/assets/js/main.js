@@ -222,9 +222,4 @@ $(document).ready(function () {
 
   $("select").niceSelect();
 
-
-  $(document).ready(function () {
-    $('#mc_embed_signup').find('form').ajaxChimp();
-  });
-
 });

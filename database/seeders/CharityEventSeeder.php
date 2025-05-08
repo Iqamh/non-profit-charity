@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Events;
 
@@ -15,6 +14,6 @@ class CharityEventSeeder extends Seeder
      */
     public function run()
     {
-        Events::factory()->count(10)->create();
+        Events::factory()->count(12)->create();
     }
 }

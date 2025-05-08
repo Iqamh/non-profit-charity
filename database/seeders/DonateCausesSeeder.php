@@ -2,10 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\Causes;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Events;
+use App\Models\Causes;
 
 class DonateCausesSeeder extends Seeder
 {
@@ -16,6 +14,6 @@ class DonateCausesSeeder extends Seeder
      */
     public function run()
     {
-        Causes::factory()->count(10)->create();
+        Causes::factory()->count(15)->create();
     }
 }

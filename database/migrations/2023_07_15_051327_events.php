@@ -21,7 +21,6 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->date('start')->nullable();
             $table->date('end')->nullable();
-            $table->integer('sum')->nullable();
             $table->timestamps();
         });
     }
