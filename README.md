@@ -1,4 +1,4 @@
-# Care4All 🌍
+# Care4All
 
 **Care4All** is a Laravel-based web application designed to support social initiatives through an online donation system and volunteer registration. The platform serves two main user roles: **general users** and **administrators**, both connected through a secure authentication and data management system.
 
@@ -6,16 +6,16 @@ Users can participate as donors or volunteers, while admins are responsible for 
 
 ---
 
-## 🔍 Overview
+## Overview
 
 Care4All focuses on:
-- ✅ Easy access for all users
-- 🔐 Secure data handling
-- ⚙️ Efficient management of social programs
+- Easy access for all users
+- Secure data handling
+- Efficient management of social programs
 
 ---
 
-## 🚀 Key Features
+## Key Features
 
 - User & admin registration and login
 - Online donation system
@@ -26,7 +26,7 @@ Care4All focuses on:
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **Backend**: [Laravel](https://laravel.com/)
 - **Database**: MySQL
