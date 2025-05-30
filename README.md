@@ -31,3 +31,4 @@ Care4All focuses on:
 - **Backend**: [Laravel](https://laravel.com/)
 - **Database**: MySQL
 - **Frontend**: HTML/CSS template (template name not recorded)
+- **Authentication**: Laravel built-in Auth
